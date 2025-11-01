@@ -32,5 +32,23 @@
                 {{ $slot }}
             </main>
         </div>
+        <script>
+            const themeToggle = document.getElementById('theme-toggle');
+            const html = document.documentElement;
+
+            // Verifica o tema salvo no localStorage
+            if (localStorage.getItem('theme') === 'dark') {
+                html.classList.add('dark');
+            }
+
+            // Alterna entre claro e escuro
+            themeToggle.addEventListener('click', () => {
+                html.classList.toggle('dark');
+                localStorage.setItem(
+                    'theme',
+                    html.classList.contains('dark') ? 'dark' : 'light'
+                );
+            });
+        </script>
     </body>
 </html>
